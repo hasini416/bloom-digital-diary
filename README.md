@@ -1,2 +1,6 @@
-# bloom-digital-diary
-Bloom is a personal digital diary that helps users gently track their moods, habits, goals, and daily reflections. Built with React, Spring Boot, and MongoDB, Bloom focuses on simplicity, modular design, and future scalability.
+# Bloom🌸
+
+Bloom is a personal digital diary designed to help users gently reflect, track habits, set goals, and grow over time.
+
+The project is built using React, Spring Boot, and MongoDB, with a focus on clean architecture, simplicity, and future scalability.
+
