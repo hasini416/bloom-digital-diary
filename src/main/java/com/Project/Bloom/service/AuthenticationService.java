@@ -1,5 +1,6 @@
 package com.Project.Bloom.service;
 
+import com.Project.Bloom.dto.AffirmationResponse;
 import com.Project.Bloom.dto.AuthenticationRequest;
 import com.Project.Bloom.dto.AuthenticationResponse;
 import com.Project.Bloom.dto.RegisterRequest;
@@ -22,6 +23,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final AffirmationService affirmationService;
 
     public @Nullable AuthenticationResponse register(RegisterRequest request) {
 
@@ -49,8 +51,11 @@ public class AuthenticationService {
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException(request.getEmail()));
         var jwtToken = jwtService.generateToken(user);
+
+        AffirmationResponse affirmationResponse = affirmationService.getTodayAffirmation(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .affirmation(affirmationResponse.getText())
                 .build();
     }
 }
